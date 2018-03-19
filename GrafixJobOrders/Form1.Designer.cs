@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.allTabs = new System.Windows.Forms.TabControl();
             this.allOrdersTab = new System.Windows.Forms.TabPage();
+            this.newJobOrder = new System.Windows.Forms.Button();
             this.allJobOrdersDataGrid = new System.Windows.Forms.DataGridView();
             this.orderDetailsTab = new System.Windows.Forms.TabPage();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.createJobOrderButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.note = new System.Windows.Forms.TextBox();
@@ -157,8 +160,52 @@
             this.label2 = new System.Windows.Forms.Label();
             this.customer = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.newJobOrder = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
+            this.projectReportTab = new System.Windows.Forms.TabPage();
+            this.checkedBy = new System.Windows.Forms.TextBox();
+            this.label61 = new System.Windows.Forms.Label();
+            this.preparedBy = new System.Windows.Forms.TextBox();
+            this.label62 = new System.Windows.Forms.Label();
+            this.receivable = new System.Windows.Forms.TextBox();
+            this.label51 = new System.Windows.Forms.Label();
+            this.netIncome = new System.Windows.Forms.TextBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.expenses = new System.Windows.Forms.TextBox();
+            this.label59 = new System.Windows.Forms.Label();
+            this.totalAmount = new System.Windows.Forms.TextBox();
+            this.label60 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.otherExpensesExp2 = new System.Windows.Forms.TextBox();
+            this.fabricMaterialsExp = new System.Windows.Forms.TextBox();
+            this.otherExpensesExp1 = new System.Windows.Forms.TextBox();
+            this.label53 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.paintExp = new System.Windows.Forms.TextBox();
+            this.marketingFeeExp = new System.Windows.Forms.TextBox();
+            this.label54 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
+            this.cutSewLaborExp = new System.Windows.Forms.TextBox();
+            this.transportationExp = new System.Windows.Forms.TextBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.numberOfPieces = new System.Windows.Forms.TextBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.amountPerPiece = new System.Windows.Forms.TextBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.projectTitleProjectReport = new System.Windows.Forms.TextBox();
+            this.label46 = new System.Windows.Forms.Label();
+            this.customerProjectReport = new System.Windows.Forms.TextBox();
+            this.laebl234234 = new System.Windows.Forms.Label();
+            this.dateProjectReport = new System.Windows.Forms.DateTimePicker();
+            this.label63 = new System.Windows.Forms.Label();
+            this.dateReceived = new System.Windows.Forms.DateTimePicker();
+            this.dateReleased = new System.Windows.Forms.DateTimePicker();
+            this.cancelProjectReportButton = new System.Windows.Forms.Button();
+            this.saveProjectReportButton = new System.Windows.Forms.Button();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label64 = new System.Windows.Forms.Label();
             this.allTabs.SuspendLayout();
             this.allOrdersTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.allJobOrdersDataGrid)).BeginInit();
@@ -166,12 +213,15 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.sizesGroup.SuspendLayout();
+            this.projectReportTab.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // allTabs
             // 
             this.allTabs.Controls.Add(this.allOrdersTab);
             this.allTabs.Controls.Add(this.orderDetailsTab);
+            this.allTabs.Controls.Add(this.projectReportTab);
             this.allTabs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.allTabs.Location = new System.Drawing.Point(13, 9);
             this.allTabs.Name = "allTabs";
@@ -181,6 +231,9 @@
             // 
             // allOrdersTab
             // 
+            this.allOrdersTab.Controls.Add(this.label64);
+            this.allOrdersTab.Controls.Add(this.textBox1);
+            this.allOrdersTab.Controls.Add(this.searchButton);
             this.allOrdersTab.Controls.Add(this.newJobOrder);
             this.allOrdersTab.Controls.Add(this.allJobOrdersDataGrid);
             this.allOrdersTab.Location = new System.Drawing.Point(4, 29);
@@ -191,8 +244,20 @@
             this.allOrdersTab.Text = "All Orders";
             this.allOrdersTab.UseVisualStyleBackColor = true;
             // 
+            // newJobOrder
+            // 
+            this.newJobOrder.Location = new System.Drawing.Point(7, 7);
+            this.newJobOrder.Name = "newJobOrder";
+            this.newJobOrder.Size = new System.Drawing.Size(135, 31);
+            this.newJobOrder.TabIndex = 1;
+            this.newJobOrder.Text = "New Job Order";
+            this.newJobOrder.UseVisualStyleBackColor = true;
+            this.newJobOrder.Click += new System.EventHandler(this.newJobOrder_Click);
+            // 
             // allJobOrdersDataGrid
             // 
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.allJobOrdersDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.allJobOrdersDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.allJobOrdersDataGrid.Location = new System.Drawing.Point(7, 44);
             this.allJobOrdersDataGrid.Name = "allJobOrdersDataGrid";
@@ -235,6 +300,16 @@
             this.orderDetailsTab.Text = "Order Details";
             this.orderDetailsTab.UseVisualStyleBackColor = true;
             // 
+            // cancelButton
+            // 
+            this.cancelButton.Location = new System.Drawing.Point(540, 550);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(200, 30);
+            this.cancelButton.TabIndex = 22;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
             // createJobOrderButton
             // 
             this.createJobOrderButton.Location = new System.Drawing.Point(540, 586);
@@ -266,7 +341,7 @@
             // 
             // jobEndorsedBy
             // 
-            this.jobEndorsedBy.Location = new System.Drawing.Point(540, 131);
+            this.jobEndorsedBy.Location = new System.Drawing.Point(540, 132);
             this.jobEndorsedBy.Name = "jobEndorsedBy";
             this.jobEndorsedBy.Size = new System.Drawing.Size(200, 26);
             this.jobEndorsedBy.TabIndex = 19;
@@ -1197,7 +1272,7 @@
             // 
             // fabric
             // 
-            this.fabric.Location = new System.Drawing.Point(540, 100);
+            this.fabric.Location = new System.Drawing.Point(540, 101);
             this.fabric.Name = "fabric";
             this.fabric.Size = new System.Drawing.Size(200, 26);
             this.fabric.TabIndex = 15;
@@ -1206,7 +1281,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(426, 106);
+            this.label8.Location = new System.Drawing.Point(422, 106);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 16);
             this.label8.TabIndex = 14;
@@ -1214,7 +1289,7 @@
             // 
             // quantity
             // 
-            this.quantity.Location = new System.Drawing.Point(540, 68);
+            this.quantity.Location = new System.Drawing.Point(540, 69);
             this.quantity.Name = "quantity";
             this.quantity.Size = new System.Drawing.Size(200, 26);
             this.quantity.TabIndex = 13;
@@ -1223,7 +1298,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(426, 74);
+            this.label7.Location = new System.Drawing.Point(422, 74);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 16);
             this.label7.TabIndex = 12;
@@ -1241,7 +1316,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(426, 44);
+            this.label6.Location = new System.Drawing.Point(422, 44);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 16);
             this.label6.TabIndex = 10;
@@ -1259,7 +1334,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(426, 12);
+            this.label5.Location = new System.Drawing.Point(422, 12);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 16);
             this.label5.TabIndex = 8;
@@ -1333,25 +1408,446 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Customer";
             // 
-            // newJobOrder
+            // projectReportTab
             // 
-            this.newJobOrder.Location = new System.Drawing.Point(7, 7);
-            this.newJobOrder.Name = "newJobOrder";
-            this.newJobOrder.Size = new System.Drawing.Size(135, 31);
-            this.newJobOrder.TabIndex = 1;
-            this.newJobOrder.Text = "New Job Order";
-            this.newJobOrder.UseVisualStyleBackColor = true;
-            this.newJobOrder.Click += new System.EventHandler(this.newJobOrder_Click);
+            this.projectReportTab.Controls.Add(this.cancelProjectReportButton);
+            this.projectReportTab.Controls.Add(this.saveProjectReportButton);
+            this.projectReportTab.Controls.Add(this.dateReleased);
+            this.projectReportTab.Controls.Add(this.dateReceived);
+            this.projectReportTab.Controls.Add(this.dateProjectReport);
+            this.projectReportTab.Controls.Add(this.label63);
+            this.projectReportTab.Controls.Add(this.checkedBy);
+            this.projectReportTab.Controls.Add(this.label61);
+            this.projectReportTab.Controls.Add(this.preparedBy);
+            this.projectReportTab.Controls.Add(this.label62);
+            this.projectReportTab.Controls.Add(this.receivable);
+            this.projectReportTab.Controls.Add(this.label51);
+            this.projectReportTab.Controls.Add(this.netIncome);
+            this.projectReportTab.Controls.Add(this.label58);
+            this.projectReportTab.Controls.Add(this.expenses);
+            this.projectReportTab.Controls.Add(this.label59);
+            this.projectReportTab.Controls.Add(this.totalAmount);
+            this.projectReportTab.Controls.Add(this.label60);
+            this.projectReportTab.Controls.Add(this.groupBox1);
+            this.projectReportTab.Controls.Add(this.label50);
+            this.projectReportTab.Controls.Add(this.label49);
+            this.projectReportTab.Controls.Add(this.numberOfPieces);
+            this.projectReportTab.Controls.Add(this.label48);
+            this.projectReportTab.Controls.Add(this.amountPerPiece);
+            this.projectReportTab.Controls.Add(this.label47);
+            this.projectReportTab.Controls.Add(this.projectTitleProjectReport);
+            this.projectReportTab.Controls.Add(this.label46);
+            this.projectReportTab.Controls.Add(this.customerProjectReport);
+            this.projectReportTab.Controls.Add(this.laebl234234);
+            this.projectReportTab.Location = new System.Drawing.Point(4, 29);
+            this.projectReportTab.Name = "projectReportTab";
+            this.projectReportTab.Padding = new System.Windows.Forms.Padding(3);
+            this.projectReportTab.Size = new System.Drawing.Size(751, 622);
+            this.projectReportTab.TabIndex = 2;
+            this.projectReportTab.Text = "Project Report";
+            this.projectReportTab.UseVisualStyleBackColor = true;
             // 
-            // cancelButton
+            // checkedBy
             // 
-            this.cancelButton.Location = new System.Drawing.Point(540, 550);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(200, 30);
-            this.cancelButton.TabIndex = 22;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            this.checkedBy.Location = new System.Drawing.Point(571, 339);
+            this.checkedBy.Name = "checkedBy";
+            this.checkedBy.Size = new System.Drawing.Size(158, 26);
+            this.checkedBy.TabIndex = 38;
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label61.Location = new System.Drawing.Point(455, 345);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(81, 16);
+            this.label61.TabIndex = 37;
+            this.label61.Text = "Checked By";
+            // 
+            // preparedBy
+            // 
+            this.preparedBy.Location = new System.Drawing.Point(571, 307);
+            this.preparedBy.Name = "preparedBy";
+            this.preparedBy.Size = new System.Drawing.Size(158, 26);
+            this.preparedBy.TabIndex = 36;
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label62.Location = new System.Drawing.Point(455, 313);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(84, 16);
+            this.label62.TabIndex = 35;
+            this.label62.Text = "Prepared By";
+            // 
+            // receivable
+            // 
+            this.receivable.Location = new System.Drawing.Point(143, 339);
+            this.receivable.Name = "receivable";
+            this.receivable.Size = new System.Drawing.Size(292, 26);
+            this.receivable.TabIndex = 34;
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label51.Location = new System.Drawing.Point(6, 345);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(88, 16);
+            this.label51.TabIndex = 33;
+            this.label51.Text = "Receivable";
+            // 
+            // netIncome
+            // 
+            this.netIncome.Location = new System.Drawing.Point(143, 307);
+            this.netIncome.Name = "netIncome";
+            this.netIncome.Size = new System.Drawing.Size(292, 26);
+            this.netIncome.TabIndex = 32;
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label58.Location = new System.Drawing.Point(6, 313);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(86, 16);
+            this.label58.TabIndex = 31;
+            this.label58.Text = "Net Income";
+            // 
+            // expenses
+            // 
+            this.expenses.Location = new System.Drawing.Point(143, 275);
+            this.expenses.Name = "expenses";
+            this.expenses.Size = new System.Drawing.Size(292, 26);
+            this.expenses.TabIndex = 30;
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label59.Location = new System.Drawing.Point(6, 281);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(76, 16);
+            this.label59.TabIndex = 29;
+            this.label59.Text = "Expenses";
+            // 
+            // totalAmount
+            // 
+            this.totalAmount.Location = new System.Drawing.Point(143, 243);
+            this.totalAmount.Name = "totalAmount";
+            this.totalAmount.Size = new System.Drawing.Size(292, 26);
+            this.totalAmount.TabIndex = 28;
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label60.Location = new System.Drawing.Point(6, 249);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(99, 16);
+            this.label60.TabIndex = 27;
+            this.label60.Text = "Total Amount";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label52);
+            this.groupBox1.Controls.Add(this.otherExpensesExp2);
+            this.groupBox1.Controls.Add(this.fabricMaterialsExp);
+            this.groupBox1.Controls.Add(this.otherExpensesExp1);
+            this.groupBox1.Controls.Add(this.label53);
+            this.groupBox1.Controls.Add(this.label57);
+            this.groupBox1.Controls.Add(this.paintExp);
+            this.groupBox1.Controls.Add(this.marketingFeeExp);
+            this.groupBox1.Controls.Add(this.label54);
+            this.groupBox1.Controls.Add(this.label56);
+            this.groupBox1.Controls.Add(this.cutSewLaborExp);
+            this.groupBox1.Controls.Add(this.transportationExp);
+            this.groupBox1.Controls.Add(this.label55);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(446, 46);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(293, 246);
+            this.groupBox1.TabIndex = 26;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Expenses";
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label52.Location = new System.Drawing.Point(9, 33);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(104, 16);
+            this.label52.TabIndex = 13;
+            this.label52.Text = "Fabric Materials";
+            // 
+            // otherExpensesExp2
+            // 
+            this.otherExpensesExp2.Location = new System.Drawing.Point(125, 208);
+            this.otherExpensesExp2.Name = "otherExpensesExp2";
+            this.otherExpensesExp2.Size = new System.Drawing.Size(158, 22);
+            this.otherExpensesExp2.TabIndex = 25;
+            // 
+            // fabricMaterialsExp
+            // 
+            this.fabricMaterialsExp.Location = new System.Drawing.Point(125, 27);
+            this.fabricMaterialsExp.Name = "fabricMaterialsExp";
+            this.fabricMaterialsExp.Size = new System.Drawing.Size(158, 22);
+            this.fabricMaterialsExp.TabIndex = 14;
+            // 
+            // otherExpensesExp1
+            // 
+            this.otherExpensesExp1.Location = new System.Drawing.Point(125, 187);
+            this.otherExpensesExp1.Name = "otherExpensesExp1";
+            this.otherExpensesExp1.Size = new System.Drawing.Size(158, 22);
+            this.otherExpensesExp1.TabIndex = 24;
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label53.Location = new System.Drawing.Point(9, 65);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(38, 16);
+            this.label53.TabIndex = 15;
+            this.label53.Text = "Paint";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label57.Location = new System.Drawing.Point(9, 193);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(103, 16);
+            this.label57.TabIndex = 23;
+            this.label57.Text = "Other Expenses";
+            // 
+            // paintExp
+            // 
+            this.paintExp.Location = new System.Drawing.Point(125, 59);
+            this.paintExp.Name = "paintExp";
+            this.paintExp.Size = new System.Drawing.Size(158, 22);
+            this.paintExp.TabIndex = 16;
+            // 
+            // marketingFeeExp
+            // 
+            this.marketingFeeExp.Location = new System.Drawing.Point(125, 155);
+            this.marketingFeeExp.Name = "marketingFeeExp";
+            this.marketingFeeExp.Size = new System.Drawing.Size(158, 22);
+            this.marketingFeeExp.TabIndex = 22;
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label54.Location = new System.Drawing.Point(9, 97);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(95, 16);
+            this.label54.TabIndex = 17;
+            this.label54.Text = "Cut/Sew Labor";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label56.Location = new System.Drawing.Point(9, 161);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(94, 16);
+            this.label56.TabIndex = 21;
+            this.label56.Text = "Marketing Fee";
+            // 
+            // cutSewLaborExp
+            // 
+            this.cutSewLaborExp.Location = new System.Drawing.Point(125, 91);
+            this.cutSewLaborExp.Name = "cutSewLaborExp";
+            this.cutSewLaborExp.Size = new System.Drawing.Size(158, 22);
+            this.cutSewLaborExp.TabIndex = 18;
+            // 
+            // transportationExp
+            // 
+            this.transportationExp.Location = new System.Drawing.Point(125, 123);
+            this.transportationExp.Name = "transportationExp";
+            this.transportationExp.Size = new System.Drawing.Size(158, 22);
+            this.transportationExp.TabIndex = 20;
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label55.Location = new System.Drawing.Point(9, 129);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(95, 16);
+            this.label55.TabIndex = 19;
+            this.label55.Text = "Transportation";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label50.Location = new System.Drawing.Point(6, 173);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(100, 16);
+            this.label50.TabIndex = 10;
+            this.label50.Text = "Date Released";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label49.Location = new System.Drawing.Point(6, 141);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(99, 16);
+            this.label49.TabIndex = 8;
+            this.label49.Text = "Date Received";
+            // 
+            // numberOfPieces
+            // 
+            this.numberOfPieces.Location = new System.Drawing.Point(143, 103);
+            this.numberOfPieces.Name = "numberOfPieces";
+            this.numberOfPieces.Size = new System.Drawing.Size(292, 26);
+            this.numberOfPieces.TabIndex = 7;
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label48.Location = new System.Drawing.Point(6, 109);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(115, 16);
+            this.label48.TabIndex = 6;
+            this.label48.Text = "Number of Pieces";
+            // 
+            // amountPerPiece
+            // 
+            this.amountPerPiece.Location = new System.Drawing.Point(143, 71);
+            this.amountPerPiece.Name = "amountPerPiece";
+            this.amountPerPiece.Size = new System.Drawing.Size(292, 26);
+            this.amountPerPiece.TabIndex = 5;
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label47.Location = new System.Drawing.Point(6, 77);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(115, 16);
+            this.label47.TabIndex = 4;
+            this.label47.Text = "Amount Per Piece";
+            // 
+            // projectTitleProjectReport
+            // 
+            this.projectTitleProjectReport.Location = new System.Drawing.Point(143, 39);
+            this.projectTitleProjectReport.Name = "projectTitleProjectReport";
+            this.projectTitleProjectReport.Size = new System.Drawing.Size(292, 26);
+            this.projectTitleProjectReport.TabIndex = 3;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label46.Location = new System.Drawing.Point(6, 45);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(79, 16);
+            this.label46.TabIndex = 2;
+            this.label46.Text = "Project Title";
+            // 
+            // customerProjectReport
+            // 
+            this.customerProjectReport.Location = new System.Drawing.Point(143, 7);
+            this.customerProjectReport.Name = "customerProjectReport";
+            this.customerProjectReport.Size = new System.Drawing.Size(292, 26);
+            this.customerProjectReport.TabIndex = 1;
+            // 
+            // laebl234234
+            // 
+            this.laebl234234.AutoSize = true;
+            this.laebl234234.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.laebl234234.Location = new System.Drawing.Point(6, 13);
+            this.laebl234234.Name = "laebl234234";
+            this.laebl234234.Size = new System.Drawing.Size(105, 16);
+            this.laebl234234.TabIndex = 0;
+            this.laebl234234.Text = "Customer Name";
+            // 
+            // dateProjectReport
+            // 
+            this.dateProjectReport.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateProjectReport.Location = new System.Drawing.Point(571, 7);
+            this.dateProjectReport.Name = "dateProjectReport";
+            this.dateProjectReport.Size = new System.Drawing.Size(158, 26);
+            this.dateProjectReport.TabIndex = 40;
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label63.Location = new System.Drawing.Point(455, 13);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(37, 16);
+            this.label63.TabIndex = 39;
+            this.label63.Text = "Date";
+            // 
+            // dateReceived
+            // 
+            this.dateReceived.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateReceived.Location = new System.Drawing.Point(143, 135);
+            this.dateReceived.Name = "dateReceived";
+            this.dateReceived.Size = new System.Drawing.Size(292, 26);
+            this.dateReceived.TabIndex = 41;
+            // 
+            // dateReleased
+            // 
+            this.dateReleased.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateReleased.Location = new System.Drawing.Point(143, 167);
+            this.dateReleased.Name = "dateReleased";
+            this.dateReleased.Size = new System.Drawing.Size(292, 26);
+            this.dateReleased.TabIndex = 42;
+            // 
+            // cancelProjectReportButton
+            // 
+            this.cancelProjectReportButton.Location = new System.Drawing.Point(333, 584);
+            this.cancelProjectReportButton.Name = "cancelProjectReportButton";
+            this.cancelProjectReportButton.Size = new System.Drawing.Size(200, 30);
+            this.cancelProjectReportButton.TabIndex = 44;
+            this.cancelProjectReportButton.Text = "Cancel";
+            this.cancelProjectReportButton.UseVisualStyleBackColor = true;
+            this.cancelProjectReportButton.Click += new System.EventHandler(this.cancelProjectReportButton_Click);
+            // 
+            // saveProjectReportButton
+            // 
+            this.saveProjectReportButton.Location = new System.Drawing.Point(539, 584);
+            this.saveProjectReportButton.Name = "saveProjectReportButton";
+            this.saveProjectReportButton.Size = new System.Drawing.Size(200, 30);
+            this.saveProjectReportButton.TabIndex = 43;
+            this.saveProjectReportButton.Text = "Save";
+            this.saveProjectReportButton.UseVisualStyleBackColor = true;
+            this.saveProjectReportButton.Click += new System.EventHandler(this.saveProjectReportButton_Click);
+            // 
+            // searchButton
+            // 
+            this.searchButton.Location = new System.Drawing.Point(653, 6);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(92, 31);
+            this.searchButton.TabIndex = 2;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(449, 9);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(198, 26);
+            this.textBox1.TabIndex = 3;
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label64.Location = new System.Drawing.Point(392, 14);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(51, 16);
+            this.label64.TabIndex = 4;
+            this.label64.Text = "Search";
             // 
             // Form1
             // 
@@ -1368,6 +1864,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.allTabs.ResumeLayout(false);
             this.allOrdersTab.ResumeLayout(false);
+            this.allOrdersTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.allJobOrdersDataGrid)).EndInit();
             this.orderDetailsTab.ResumeLayout(false);
             this.orderDetailsTab.PerformLayout();
@@ -1377,6 +1874,10 @@
             this.groupBox2.PerformLayout();
             this.sizesGroup.ResumeLayout(false);
             this.sizesGroup.PerformLayout();
+            this.projectReportTab.ResumeLayout(false);
+            this.projectReportTab.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1513,6 +2014,52 @@
         private System.Windows.Forms.DataGridView allJobOrdersDataGrid;
         private System.Windows.Forms.Button newJobOrder;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.TabPage projectReportTab;
+        private System.Windows.Forms.TextBox projectTitleProjectReport;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.TextBox customerProjectReport;
+        private System.Windows.Forms.Label laebl234234;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.TextBox otherExpensesExp2;
+        private System.Windows.Forms.TextBox fabricMaterialsExp;
+        private System.Windows.Forms.TextBox otherExpensesExp1;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.TextBox paintExp;
+        private System.Windows.Forms.TextBox marketingFeeExp;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.TextBox cutSewLaborExp;
+        private System.Windows.Forms.TextBox transportationExp;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.TextBox numberOfPieces;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.TextBox amountPerPiece;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.TextBox checkedBy;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.TextBox preparedBy;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.TextBox receivable;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.TextBox netIncome;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.TextBox expenses;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.TextBox totalAmount;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.DateTimePicker dateProjectReport;
+        private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.DateTimePicker dateReleased;
+        private System.Windows.Forms.DateTimePicker dateReceived;
+        private System.Windows.Forms.Button cancelProjectReportButton;
+        private System.Windows.Forms.Button saveProjectReportButton;
+        private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button searchButton;
     }
 }
 
