@@ -32,6 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.allTabs = new System.Windows.Forms.TabControl();
             this.allOrdersTab = new System.Windows.Forms.TabPage();
+            this.resetButton = new System.Windows.Forms.Button();
+            this.label64 = new System.Windows.Forms.Label();
+            this.searchKeyword = new System.Windows.Forms.TextBox();
+            this.searchButton = new System.Windows.Forms.Button();
             this.newJobOrder = new System.Windows.Forms.Button();
             this.allJobOrdersDataGrid = new System.Windows.Forms.DataGridView();
             this.orderDetailsTab = new System.Windows.Forms.TabPage();
@@ -161,6 +165,12 @@
             this.customer = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.projectReportTab = new System.Windows.Forms.TabPage();
+            this.cancelProjectReportButton = new System.Windows.Forms.Button();
+            this.saveProjectReportButton = new System.Windows.Forms.Button();
+            this.dateReleased = new System.Windows.Forms.DateTimePicker();
+            this.dateReceived = new System.Windows.Forms.DateTimePicker();
+            this.dateProjectReport = new System.Windows.Forms.DateTimePicker();
+            this.label63 = new System.Windows.Forms.Label();
             this.checkedBy = new System.Windows.Forms.TextBox();
             this.label61 = new System.Windows.Forms.Label();
             this.preparedBy = new System.Windows.Forms.TextBox();
@@ -197,15 +207,6 @@
             this.label46 = new System.Windows.Forms.Label();
             this.customerProjectReport = new System.Windows.Forms.TextBox();
             this.laebl234234 = new System.Windows.Forms.Label();
-            this.dateProjectReport = new System.Windows.Forms.DateTimePicker();
-            this.label63 = new System.Windows.Forms.Label();
-            this.dateReceived = new System.Windows.Forms.DateTimePicker();
-            this.dateReleased = new System.Windows.Forms.DateTimePicker();
-            this.cancelProjectReportButton = new System.Windows.Forms.Button();
-            this.saveProjectReportButton = new System.Windows.Forms.Button();
-            this.searchButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label64 = new System.Windows.Forms.Label();
             this.allTabs.SuspendLayout();
             this.allOrdersTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.allJobOrdersDataGrid)).BeginInit();
@@ -231,8 +232,9 @@
             // 
             // allOrdersTab
             // 
+            this.allOrdersTab.Controls.Add(this.resetButton);
             this.allOrdersTab.Controls.Add(this.label64);
-            this.allOrdersTab.Controls.Add(this.textBox1);
+            this.allOrdersTab.Controls.Add(this.searchKeyword);
             this.allOrdersTab.Controls.Add(this.searchButton);
             this.allOrdersTab.Controls.Add(this.newJobOrder);
             this.allOrdersTab.Controls.Add(this.allJobOrdersDataGrid);
@@ -243,6 +245,44 @@
             this.allOrdersTab.TabIndex = 0;
             this.allOrdersTab.Text = "All Orders";
             this.allOrdersTab.UseVisualStyleBackColor = true;
+            // 
+            // resetButton
+            // 
+            this.resetButton.Location = new System.Drawing.Point(653, 7);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(92, 31);
+            this.resetButton.TabIndex = 5;
+            this.resetButton.Text = "Reset";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label64.Location = new System.Drawing.Point(294, 14);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(51, 16);
+            this.label64.TabIndex = 4;
+            this.label64.Text = "Search";
+            // 
+            // searchKeyword
+            // 
+            this.searchKeyword.Location = new System.Drawing.Point(351, 9);
+            this.searchKeyword.Name = "searchKeyword";
+            this.searchKeyword.Size = new System.Drawing.Size(198, 26);
+            this.searchKeyword.TabIndex = 3;
+            this.searchKeyword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchKeyword_KeyDown);
+            // 
+            // searchButton
+            // 
+            this.searchButton.Location = new System.Drawing.Point(555, 6);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(92, 31);
+            this.searchButton.TabIndex = 2;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // newJobOrder
             // 
@@ -1447,6 +1487,60 @@
             this.projectReportTab.Text = "Project Report";
             this.projectReportTab.UseVisualStyleBackColor = true;
             // 
+            // cancelProjectReportButton
+            // 
+            this.cancelProjectReportButton.Location = new System.Drawing.Point(333, 584);
+            this.cancelProjectReportButton.Name = "cancelProjectReportButton";
+            this.cancelProjectReportButton.Size = new System.Drawing.Size(200, 30);
+            this.cancelProjectReportButton.TabIndex = 44;
+            this.cancelProjectReportButton.Text = "Cancel";
+            this.cancelProjectReportButton.UseVisualStyleBackColor = true;
+            this.cancelProjectReportButton.Click += new System.EventHandler(this.cancelProjectReportButton_Click);
+            // 
+            // saveProjectReportButton
+            // 
+            this.saveProjectReportButton.Location = new System.Drawing.Point(539, 584);
+            this.saveProjectReportButton.Name = "saveProjectReportButton";
+            this.saveProjectReportButton.Size = new System.Drawing.Size(200, 30);
+            this.saveProjectReportButton.TabIndex = 43;
+            this.saveProjectReportButton.Text = "Save";
+            this.saveProjectReportButton.UseVisualStyleBackColor = true;
+            this.saveProjectReportButton.Click += new System.EventHandler(this.saveProjectReportButton_Click);
+            // 
+            // dateReleased
+            // 
+            this.dateReleased.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateReleased.Location = new System.Drawing.Point(143, 167);
+            this.dateReleased.Name = "dateReleased";
+            this.dateReleased.Size = new System.Drawing.Size(292, 26);
+            this.dateReleased.TabIndex = 42;
+            // 
+            // dateReceived
+            // 
+            this.dateReceived.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateReceived.Location = new System.Drawing.Point(143, 135);
+            this.dateReceived.Name = "dateReceived";
+            this.dateReceived.Size = new System.Drawing.Size(292, 26);
+            this.dateReceived.TabIndex = 41;
+            // 
+            // dateProjectReport
+            // 
+            this.dateProjectReport.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateProjectReport.Location = new System.Drawing.Point(571, 7);
+            this.dateProjectReport.Name = "dateProjectReport";
+            this.dateProjectReport.Size = new System.Drawing.Size(158, 26);
+            this.dateProjectReport.TabIndex = 40;
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label63.Location = new System.Drawing.Point(455, 13);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(37, 16);
+            this.label63.TabIndex = 39;
+            this.label63.Text = "Date";
+            // 
             // checkedBy
             // 
             this.checkedBy.Location = new System.Drawing.Point(571, 339);
@@ -1769,86 +1863,6 @@
             this.laebl234234.TabIndex = 0;
             this.laebl234234.Text = "Customer Name";
             // 
-            // dateProjectReport
-            // 
-            this.dateProjectReport.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateProjectReport.Location = new System.Drawing.Point(571, 7);
-            this.dateProjectReport.Name = "dateProjectReport";
-            this.dateProjectReport.Size = new System.Drawing.Size(158, 26);
-            this.dateProjectReport.TabIndex = 40;
-            // 
-            // label63
-            // 
-            this.label63.AutoSize = true;
-            this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label63.Location = new System.Drawing.Point(455, 13);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(37, 16);
-            this.label63.TabIndex = 39;
-            this.label63.Text = "Date";
-            // 
-            // dateReceived
-            // 
-            this.dateReceived.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateReceived.Location = new System.Drawing.Point(143, 135);
-            this.dateReceived.Name = "dateReceived";
-            this.dateReceived.Size = new System.Drawing.Size(292, 26);
-            this.dateReceived.TabIndex = 41;
-            // 
-            // dateReleased
-            // 
-            this.dateReleased.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateReleased.Location = new System.Drawing.Point(143, 167);
-            this.dateReleased.Name = "dateReleased";
-            this.dateReleased.Size = new System.Drawing.Size(292, 26);
-            this.dateReleased.TabIndex = 42;
-            // 
-            // cancelProjectReportButton
-            // 
-            this.cancelProjectReportButton.Location = new System.Drawing.Point(333, 584);
-            this.cancelProjectReportButton.Name = "cancelProjectReportButton";
-            this.cancelProjectReportButton.Size = new System.Drawing.Size(200, 30);
-            this.cancelProjectReportButton.TabIndex = 44;
-            this.cancelProjectReportButton.Text = "Cancel";
-            this.cancelProjectReportButton.UseVisualStyleBackColor = true;
-            this.cancelProjectReportButton.Click += new System.EventHandler(this.cancelProjectReportButton_Click);
-            // 
-            // saveProjectReportButton
-            // 
-            this.saveProjectReportButton.Location = new System.Drawing.Point(539, 584);
-            this.saveProjectReportButton.Name = "saveProjectReportButton";
-            this.saveProjectReportButton.Size = new System.Drawing.Size(200, 30);
-            this.saveProjectReportButton.TabIndex = 43;
-            this.saveProjectReportButton.Text = "Save";
-            this.saveProjectReportButton.UseVisualStyleBackColor = true;
-            this.saveProjectReportButton.Click += new System.EventHandler(this.saveProjectReportButton_Click);
-            // 
-            // searchButton
-            // 
-            this.searchButton.Location = new System.Drawing.Point(653, 6);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(92, 31);
-            this.searchButton.TabIndex = 2;
-            this.searchButton.Text = "Search";
-            this.searchButton.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(449, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(198, 26);
-            this.textBox1.TabIndex = 3;
-            // 
-            // label64
-            // 
-            this.label64.AutoSize = true;
-            this.label64.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label64.Location = new System.Drawing.Point(392, 14);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(51, 16);
-            this.label64.TabIndex = 4;
-            this.label64.Text = "Search";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2058,8 +2072,9 @@
         private System.Windows.Forms.Button cancelProjectReportButton;
         private System.Windows.Forms.Button saveProjectReportButton;
         private System.Windows.Forms.Label label64;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox searchKeyword;
         private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.Button resetButton;
     }
 }
 

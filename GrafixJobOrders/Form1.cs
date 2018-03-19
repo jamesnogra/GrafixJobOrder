@@ -14,7 +14,7 @@ namespace GrafixJobOrders
         private string fileNameBackup = "Data/JobOrderRecordsBackup.csv";
         private string orderCodeSelected = "";
         private int[] columnsToShow = new int[] { 0, 1, 4, 5, 8, 9, 87, 88, 89, 90, 91, 92, 93 };
-        DataSet dataset = new DataSet();
+        DataTable dataset = new DataTable();
 
         public Form1()
         {
@@ -115,27 +115,30 @@ namespace GrafixJobOrders
                 string delimiter = ",";
                 string tablename = "export";
                 StreamReader sr = new StreamReader(@fileName);
-                dataset = new DataSet();
-                dataset.Tables.Add(tablename);
+                dataset = new DataTable();
+                //dataset.Tables.Add(tablename);
                 string allData = sr.ReadToEnd();
                 sr.Close();
                 string[] rows = allData.Split("\r".ToCharArray());
                 //add first the column names
                 string[] items = rows[0].Split(delimiter.ToCharArray());
-                foreach (string r in items)
+                for (int x=0; x<items.Length; x++)
                 {
-                    dataset.Tables[tablename].Columns.Add(r);
+                    //dataset.Tables[tablename].Columns.Add(items[x]);
+                    dataset.Columns.Add(items[x]);
                 }
                 for (int x = 1; x < rows.Length; x++)
                 {
                     items = rows[x].Split(delimiter.ToCharArray());
                     if (items[0].Length>1)
                     {
-                        dataset.Tables[tablename].Rows.Add(items);
+                        //dataset.Tables[tablename].Rows.Add(items);
+                        dataset.Rows.Add(items);
                     }
                     Application.DoEvents();
                 }
-                allJobOrdersDataGrid.DataSource = dataset.Tables[0].DefaultView;
+                //allJobOrdersDataGrid.DataSource = dataset.Tables[0].DefaultView;
+                allJobOrdersDataGrid.DataSource = dataset;
                 adjustWidthOfDataGridColumns();
             }
             catch (Exception ex)
@@ -357,6 +360,7 @@ namespace GrafixJobOrders
                 if (columnsToShow.Contains(x))
                 {
                     allJobOrdersDataGrid.Columns[x].Visible = true;
+                    allJobOrdersDataGrid.Columns[x].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 }
                 else
                 {
@@ -386,6 +390,26 @@ namespace GrafixJobOrders
         private void saveProjectReportButton_Click(object sender, EventArgs e)
         {
             createJobOrderButton_Click(sender, e);
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            string searchValue = searchKeyword.Text;
+            (allJobOrdersDataGrid.DataSource as DataTable).DefaultView.RowFilter = string.Format("`Customer` LIKE '%{0}%' OR `Project Title` LIKE '%{0}%' OR `Date` LIKE '%{0}%' OR `Due Date` LIKE '%{0}%'  OR `Order Code` LIKE '%{0}%'", searchValue);
+        }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            searchKeyword.Text = "";
+            (allJobOrdersDataGrid.DataSource as DataTable).DefaultView.RowFilter = null;
+        }
+
+        private void searchKeyword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                searchButton_Click(sender, e);
+            }
         }
     }
 }
