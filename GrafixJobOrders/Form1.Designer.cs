@@ -28,28 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.newOrderTab = new System.Windows.Forms.TabControl();
+            this.allTabs = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dataGridViewJobOrders = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estimatedByDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jobOrdersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.grafixData1 = new GrafixJobOrders.GrafixData1();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.allJobOrdersDataGrid = new System.Windows.Forms.DataGridView();
+            this.orderDetailsTab = new System.Windows.Forms.TabPage();
             this.createJobOrderButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.note = new System.Windows.Forms.TextBox();
-            this.textBox37 = new System.Windows.Forms.TextBox();
+            this.jobEndorsedBy = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.materialsOrderedBy = new System.Windows.Forms.TextBox();
@@ -118,13 +105,13 @@
             this.k8Male = new System.Windows.Forms.TextBox();
             this.k6Male = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
-            this.xxxxxFemale = new System.Windows.Forms.TextBox();
+            this.xxxxxlFemale = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.xxxxFemale = new System.Windows.Forms.TextBox();
+            this.xxxxlFemale = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.xxxFemale = new System.Windows.Forms.TextBox();
+            this.xxxlFemale = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.xxFemale = new System.Windows.Forms.TextBox();
+            this.xxlFemale = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.xlFemale = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
@@ -170,32 +157,29 @@
             this.label2 = new System.Windows.Forms.Label();
             this.customer = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.jobOrdersTableAdapter = new GrafixJobOrders.GrafixData1TableAdapters.JobOrdersTableAdapter();
-            this.newOrderTab.SuspendLayout();
+            this.allTabs.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewJobOrders)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jobOrdersBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grafixData1)).BeginInit();
-            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.allJobOrdersDataGrid)).BeginInit();
+            this.orderDetailsTab.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // newOrderTab
+            // allTabs
             // 
-            this.newOrderTab.Controls.Add(this.tabPage1);
-            this.newOrderTab.Controls.Add(this.tabPage2);
-            this.newOrderTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newOrderTab.Location = new System.Drawing.Point(13, 9);
-            this.newOrderTab.Name = "newOrderTab";
-            this.newOrderTab.SelectedIndex = 0;
-            this.newOrderTab.Size = new System.Drawing.Size(759, 655);
-            this.newOrderTab.TabIndex = 0;
+            this.allTabs.Controls.Add(this.tabPage1);
+            this.allTabs.Controls.Add(this.orderDetailsTab);
+            this.allTabs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.allTabs.Location = new System.Drawing.Point(13, 9);
+            this.allTabs.Name = "allTabs";
+            this.allTabs.SelectedIndex = 0;
+            this.allTabs.Size = new System.Drawing.Size(759, 655);
+            this.allTabs.TabIndex = 0;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.dataGridViewJobOrders);
+            this.tabPage1.Controls.Add(this.allJobOrdersDataGrid);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -204,129 +188,47 @@
             this.tabPage1.Text = "All Orders";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewJobOrders
+            // allJobOrdersDataGrid
             // 
-            this.dataGridViewJobOrders.AutoGenerateColumns = false;
-            this.dataGridViewJobOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewJobOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
-            this.estimatedByDataGridViewTextBoxColumn,
-            this.dataGridViewTextBoxColumn10});
-            this.dataGridViewJobOrders.DataSource = this.jobOrdersBindingSource1;
-            this.dataGridViewJobOrders.Location = new System.Drawing.Point(7, 6);
-            this.dataGridViewJobOrders.Name = "dataGridViewJobOrders";
-            this.dataGridViewJobOrders.Size = new System.Drawing.Size(738, 610);
-            this.dataGridViewJobOrders.TabIndex = 0;
+            this.allJobOrdersDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.allJobOrdersDataGrid.Location = new System.Drawing.Point(7, 7);
+            this.allJobOrdersDataGrid.Name = "allJobOrdersDataGrid";
+            this.allJobOrdersDataGrid.ReadOnly = true;
+            this.allJobOrdersDataGrid.Size = new System.Drawing.Size(738, 609);
+            this.allJobOrdersDataGrid.TabIndex = 0;
+            this.allJobOrdersDataGrid.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.allJobOrdersDataGrid_UserDeletingRow);
             // 
-            // Column1
+            // orderDetailsTab
             // 
-            this.Column1.DataPropertyName = "Id";
-            this.Column1.HeaderText = "ID";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "customer";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Customer";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "projectTitle";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Project Title";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "date";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Date";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "dueDate";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Due Date";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "quantity";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Quantity";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "endorsedBy";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Endorsed By";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "jobEndorsedBy";
-            this.dataGridViewTextBoxColumn9.HeaderText = "Job Endorsed By";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // estimatedByDataGridViewTextBoxColumn
-            // 
-            this.estimatedByDataGridViewTextBoxColumn.DataPropertyName = "estimatedBy";
-            this.estimatedByDataGridViewTextBoxColumn.HeaderText = "Estimated By";
-            this.estimatedByDataGridViewTextBoxColumn.Name = "estimatedByDataGridViewTextBoxColumn";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "materialsOrderedBy";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Materials Ordered By";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // jobOrdersBindingSource1
-            // 
-            this.jobOrdersBindingSource1.DataMember = "JobOrders";
-            this.jobOrdersBindingSource1.DataSource = this.grafixData1;
-            // 
-            // grafixData1
-            // 
-            this.grafixData1.DataSetName = "GrafixData1";
-            this.grafixData1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.createJobOrderButton);
-            this.tabPage2.Controls.Add(this.groupBox3);
-            this.tabPage2.Controls.Add(this.textBox37);
-            this.tabPage2.Controls.Add(this.label29);
-            this.tabPage2.Controls.Add(this.groupBox2);
-            this.tabPage2.Controls.Add(this.groupBox1);
-            this.tabPage2.Controls.Add(this.fabric);
-            this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.quantity);
-            this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.dueDate);
-            this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.date);
-            this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.pattern);
-            this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Controls.Add(this.colorCombination);
-            this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.projectTitle);
-            this.tabPage2.Controls.Add(this.label2);
-            this.tabPage2.Controls.Add(this.customer);
-            this.tabPage2.Controls.Add(this.label1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(751, 622);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "New Order";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.orderDetailsTab.Controls.Add(this.createJobOrderButton);
+            this.orderDetailsTab.Controls.Add(this.groupBox3);
+            this.orderDetailsTab.Controls.Add(this.jobEndorsedBy);
+            this.orderDetailsTab.Controls.Add(this.label29);
+            this.orderDetailsTab.Controls.Add(this.groupBox2);
+            this.orderDetailsTab.Controls.Add(this.groupBox1);
+            this.orderDetailsTab.Controls.Add(this.fabric);
+            this.orderDetailsTab.Controls.Add(this.label8);
+            this.orderDetailsTab.Controls.Add(this.quantity);
+            this.orderDetailsTab.Controls.Add(this.label7);
+            this.orderDetailsTab.Controls.Add(this.dueDate);
+            this.orderDetailsTab.Controls.Add(this.label6);
+            this.orderDetailsTab.Controls.Add(this.date);
+            this.orderDetailsTab.Controls.Add(this.label5);
+            this.orderDetailsTab.Controls.Add(this.pattern);
+            this.orderDetailsTab.Controls.Add(this.label4);
+            this.orderDetailsTab.Controls.Add(this.colorCombination);
+            this.orderDetailsTab.Controls.Add(this.label3);
+            this.orderDetailsTab.Controls.Add(this.projectTitle);
+            this.orderDetailsTab.Controls.Add(this.label2);
+            this.orderDetailsTab.Controls.Add(this.customer);
+            this.orderDetailsTab.Controls.Add(this.label1);
+            this.orderDetailsTab.Location = new System.Drawing.Point(4, 29);
+            this.orderDetailsTab.Name = "orderDetailsTab";
+            this.orderDetailsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.orderDetailsTab.Size = new System.Drawing.Size(751, 622);
+            this.orderDetailsTab.TabIndex = 1;
+            this.orderDetailsTab.Text = "Order Details";
+            this.orderDetailsTab.UseVisualStyleBackColor = true;
             // 
             // createJobOrderButton
             // 
@@ -357,12 +259,12 @@
             this.note.Size = new System.Drawing.Size(188, 172);
             this.note.TabIndex = 60;
             // 
-            // textBox37
+            // jobEndorsedBy
             // 
-            this.textBox37.Location = new System.Drawing.Point(540, 131);
-            this.textBox37.Name = "textBox37";
-            this.textBox37.Size = new System.Drawing.Size(200, 26);
-            this.textBox37.TabIndex = 19;
+            this.jobEndorsedBy.Location = new System.Drawing.Point(540, 131);
+            this.jobEndorsedBy.Name = "jobEndorsedBy";
+            this.jobEndorsedBy.Size = new System.Drawing.Size(200, 26);
+            this.jobEndorsedBy.TabIndex = 19;
             // 
             // label29
             // 
@@ -773,13 +675,13 @@
             this.groupBox1.Controls.Add(this.k8Male);
             this.groupBox1.Controls.Add(this.k6Male);
             this.groupBox1.Controls.Add(this.label28);
-            this.groupBox1.Controls.Add(this.xxxxxFemale);
+            this.groupBox1.Controls.Add(this.xxxxxlFemale);
             this.groupBox1.Controls.Add(this.label18);
-            this.groupBox1.Controls.Add(this.xxxxFemale);
+            this.groupBox1.Controls.Add(this.xxxxlFemale);
             this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Controls.Add(this.xxxFemale);
+            this.groupBox1.Controls.Add(this.xxxlFemale);
             this.groupBox1.Controls.Add(this.label20);
-            this.groupBox1.Controls.Add(this.xxFemale);
+            this.groupBox1.Controls.Add(this.xxlFemale);
             this.groupBox1.Controls.Add(this.label21);
             this.groupBox1.Controls.Add(this.xlFemale);
             this.groupBox1.Controls.Add(this.label22);
@@ -1000,12 +902,12 @@
             this.label28.TabIndex = 71;
             this.label28.Text = "Female";
             // 
-            // xxxxxFemale
+            // xxxxxlFemale
             // 
-            this.xxxxxFemale.Location = new System.Drawing.Point(102, 388);
-            this.xxxxxFemale.Name = "xxxxxFemale";
-            this.xxxxxFemale.Size = new System.Drawing.Size(56, 22);
-            this.xxxxxFemale.TabIndex = 69;
+            this.xxxxxlFemale.Location = new System.Drawing.Point(102, 388);
+            this.xxxxxlFemale.Name = "xxxxxlFemale";
+            this.xxxxxlFemale.Size = new System.Drawing.Size(56, 22);
+            this.xxxxxlFemale.TabIndex = 69;
             // 
             // label18
             // 
@@ -1016,12 +918,12 @@
             this.label18.TabIndex = 67;
             this.label18.Text = "5XL";
             // 
-            // xxxxFemale
+            // xxxxlFemale
             // 
-            this.xxxxFemale.Location = new System.Drawing.Point(102, 367);
-            this.xxxxFemale.Name = "xxxxFemale";
-            this.xxxxFemale.Size = new System.Drawing.Size(56, 22);
-            this.xxxxFemale.TabIndex = 66;
+            this.xxxxlFemale.Location = new System.Drawing.Point(102, 367);
+            this.xxxxlFemale.Name = "xxxxlFemale";
+            this.xxxxlFemale.Size = new System.Drawing.Size(56, 22);
+            this.xxxxlFemale.TabIndex = 66;
             // 
             // label19
             // 
@@ -1032,12 +934,12 @@
             this.label19.TabIndex = 64;
             this.label19.Text = "4XL";
             // 
-            // xxxFemale
+            // xxxlFemale
             // 
-            this.xxxFemale.Location = new System.Drawing.Point(102, 346);
-            this.xxxFemale.Name = "xxxFemale";
-            this.xxxFemale.Size = new System.Drawing.Size(56, 22);
-            this.xxxFemale.TabIndex = 63;
+            this.xxxlFemale.Location = new System.Drawing.Point(102, 346);
+            this.xxxlFemale.Name = "xxxlFemale";
+            this.xxxlFemale.Size = new System.Drawing.Size(56, 22);
+            this.xxxlFemale.TabIndex = 63;
             // 
             // label20
             // 
@@ -1048,12 +950,12 @@
             this.label20.TabIndex = 61;
             this.label20.Text = "3XL";
             // 
-            // xxFemale
+            // xxlFemale
             // 
-            this.xxFemale.Location = new System.Drawing.Point(102, 325);
-            this.xxFemale.Name = "xxFemale";
-            this.xxFemale.Size = new System.Drawing.Size(56, 22);
-            this.xxFemale.TabIndex = 60;
+            this.xxlFemale.Location = new System.Drawing.Point(102, 325);
+            this.xxlFemale.Name = "xxlFemale";
+            this.xxlFemale.Size = new System.Drawing.Size(56, 22);
+            this.xxlFemale.TabIndex = 60;
             // 
             // label21
             // 
@@ -1290,16 +1192,16 @@
             // 
             // fabric
             // 
-            this.fabric.Location = new System.Drawing.Point(540, 100);
+            this.fabric.Location = new System.Drawing.Point(523, 100);
             this.fabric.Name = "fabric";
-            this.fabric.Size = new System.Drawing.Size(200, 26);
+            this.fabric.Size = new System.Drawing.Size(217, 26);
             this.fabric.TabIndex = 15;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(469, 106);
+            this.label8.Location = new System.Drawing.Point(426, 106);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 16);
             this.label8.TabIndex = 14;
@@ -1307,16 +1209,16 @@
             // 
             // quantity
             // 
-            this.quantity.Location = new System.Drawing.Point(540, 68);
+            this.quantity.Location = new System.Drawing.Point(523, 68);
             this.quantity.Name = "quantity";
-            this.quantity.Size = new System.Drawing.Size(200, 26);
+            this.quantity.Size = new System.Drawing.Size(217, 26);
             this.quantity.TabIndex = 13;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(469, 74);
+            this.label7.Location = new System.Drawing.Point(426, 74);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 16);
             this.label7.TabIndex = 12;
@@ -1324,16 +1226,17 @@
             // 
             // dueDate
             // 
-            this.dueDate.Location = new System.Drawing.Point(540, 38);
+            this.dueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dueDate.Location = new System.Drawing.Point(523, 38);
             this.dueDate.Name = "dueDate";
-            this.dueDate.Size = new System.Drawing.Size(200, 26);
+            this.dueDate.Size = new System.Drawing.Size(217, 26);
             this.dueDate.TabIndex = 11;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(469, 44);
+            this.label6.Location = new System.Drawing.Point(426, 44);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 16);
             this.label6.TabIndex = 10;
@@ -1341,16 +1244,17 @@
             // 
             // date
             // 
-            this.date.Location = new System.Drawing.Point(540, 6);
+            this.date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.date.Location = new System.Drawing.Point(523, 6);
             this.date.Name = "date";
-            this.date.Size = new System.Drawing.Size(200, 26);
+            this.date.Size = new System.Drawing.Size(217, 26);
             this.date.TabIndex = 9;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(469, 12);
+            this.label5.Location = new System.Drawing.Point(426, 12);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 16);
             this.label5.TabIndex = 8;
@@ -1392,7 +1296,6 @@
             // 
             // projectTitle
             // 
-            this.projectTitle.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.jobOrdersBindingSource1, "projectTitle", true));
             this.projectTitle.Location = new System.Drawing.Point(129, 38);
             this.projectTitle.Name = "projectTitle";
             this.projectTitle.Size = new System.Drawing.Size(272, 26);
@@ -1410,7 +1313,6 @@
             // 
             // customer
             // 
-            this.customer.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.jobOrdersBindingSource1, "customer", true));
             this.customer.Location = new System.Drawing.Point(129, 6);
             this.customer.Name = "customer";
             this.customer.Size = new System.Drawing.Size(272, 26);
@@ -1426,16 +1328,12 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Customer";
             // 
-            // jobOrdersTableAdapter
-            // 
-            this.jobOrdersTableAdapter.ClearBeforeFill = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 671);
-            this.Controls.Add(this.newOrderTab);
+            this.Controls.Add(this.allTabs);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
@@ -1443,13 +1341,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Job Orders";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.newOrderTab.ResumeLayout(false);
+            this.allTabs.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewJobOrders)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jobOrdersBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grafixData1)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.allJobOrdersDataGrid)).EndInit();
+            this.orderDetailsTab.ResumeLayout(false);
+            this.orderDetailsTab.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -1462,9 +1358,9 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl newOrderTab;
+        private System.Windows.Forms.TabControl allTabs;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage orderDetailsTab;
         private System.Windows.Forms.TextBox fabric;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox quantity;
@@ -1483,13 +1379,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox xxxxxFemale;
+        private System.Windows.Forms.TextBox xxxxxlFemale;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox xxxxFemale;
+        private System.Windows.Forms.TextBox xxxxlFemale;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox xxxFemale;
+        private System.Windows.Forms.TextBox xxxlFemale;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox xxFemale;
+        private System.Windows.Forms.TextBox xxlFemale;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox xlFemale;
         private System.Windows.Forms.Label label22;
@@ -1518,7 +1414,7 @@
         private System.Windows.Forms.TextBox k8Female;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox k6Female;
-        private System.Windows.Forms.TextBox textBox37;
+        private System.Windows.Forms.TextBox jobEndorsedBy;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox bodyColorAmount5;
@@ -1589,30 +1485,7 @@
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Button createJobOrderButton;
         private System.Windows.Forms.TextBox note;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn projectTitleDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colorCombinationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn patternDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dueDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn endorsedByDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn jobEndorsedByDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn materialsOrderedByDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridView dataGridViewJobOrders;
-        private GrafixData1 grafixData1;
-        private System.Windows.Forms.BindingSource jobOrdersBindingSource1;
-        private GrafixData1TableAdapters.JobOrdersTableAdapter jobOrdersTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estimatedByDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridView allJobOrdersDataGrid;
     }
 }
 

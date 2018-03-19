@@ -9,3 +9,12 @@ C:\Users\James\Documents\Visual Studio 2017\Projects\GrafixJobOrders\GrafixJobOr
 C:\Users\James\Documents\Visual Studio 2017\Projects\GrafixJobOrders\GrafixJobOrders\obj\Debug\GrafixJobOrders.pdb
 C:\Users\James\Documents\Visual Studio 2017\Projects\GrafixJobOrders\GrafixJobOrders\bin\Debug\Grafix.mdf
 C:\Users\James\Documents\Visual Studio 2017\Projects\GrafixJobOrders\GrafixJobOrders\bin\Debug\Grafix_log.ldf
+C:\Users\James Nogra\Documents\Visual Studio 2017\Projects\GrafixJobOrder\GrafixJobOrders\bin\Debug\GrafixJobOrders.exe.config
+C:\Users\James Nogra\Documents\Visual Studio 2017\Projects\GrafixJobOrder\GrafixJobOrders\bin\Debug\GrafixJobOrders.exe
+C:\Users\James Nogra\Documents\Visual Studio 2017\Projects\GrafixJobOrder\GrafixJobOrders\bin\Debug\GrafixJobOrders.pdb
+C:\Users\James Nogra\Documents\Visual Studio 2017\Projects\GrafixJobOrder\GrafixJobOrders\obj\Debug\GrafixJobOrders.Form1.resources
+C:\Users\James Nogra\Documents\Visual Studio 2017\Projects\GrafixJobOrder\GrafixJobOrders\obj\Debug\GrafixJobOrders.Properties.Resources.resources
+C:\Users\James Nogra\Documents\Visual Studio 2017\Projects\GrafixJobOrder\GrafixJobOrders\obj\Debug\GrafixJobOrders.csproj.GenerateResource.Cache
+C:\Users\James Nogra\Documents\Visual Studio 2017\Projects\GrafixJobOrder\GrafixJobOrders\obj\Debug\GrafixJobOrders.csproj.CoreCompileInputs.cache
+C:\Users\James Nogra\Documents\Visual Studio 2017\Projects\GrafixJobOrder\GrafixJobOrders\obj\Debug\GrafixJobOrders.exe
+C:\Users\James Nogra\Documents\Visual Studio 2017\Projects\GrafixJobOrder\GrafixJobOrders\obj\Debug\GrafixJobOrders.pdb
