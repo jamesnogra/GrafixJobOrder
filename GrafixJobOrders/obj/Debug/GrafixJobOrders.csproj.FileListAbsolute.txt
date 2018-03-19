@@ -18,3 +18,4 @@ C:\Users\James Nogra\Documents\Visual Studio 2017\Projects\GrafixJobOrder\Grafix
 C:\Users\James Nogra\Documents\Visual Studio 2017\Projects\GrafixJobOrder\GrafixJobOrders\obj\Debug\GrafixJobOrders.csproj.CoreCompileInputs.cache
 C:\Users\James Nogra\Documents\Visual Studio 2017\Projects\GrafixJobOrder\GrafixJobOrders\obj\Debug\GrafixJobOrders.exe
 C:\Users\James Nogra\Documents\Visual Studio 2017\Projects\GrafixJobOrder\GrafixJobOrders\obj\Debug\GrafixJobOrders.pdb
+C:\Users\James Nogra\Documents\Visual Studio 2017\Projects\GrafixJobOrder\GrafixJobOrders\obj\Debug\GrafixJobOrders.csprojResolveAssemblyReference.cache

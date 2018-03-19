@@ -11,7 +11,8 @@ namespace GrafixJobOrders
 {
     public partial class Form1 : Form
     {
-        private string fileName = @"JobOrderRecords.csv";
+        private string fileName = "JobOrderRecords.csv";
+        private string orderCodeSelected = "";
         DataSet dataset = new DataSet();
 
         public Form1()
@@ -25,7 +26,7 @@ namespace GrafixJobOrders
             {
                 var csv = new StringBuilder();
                 var newLine = string.Format("" +
-                    "{0},{1},{2},{3},\"{4}\",\"{5}\",{6},{7},{8},{9},{10}," +
+                    "{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}," +
                     "{11},{12},{13},{14},{15},{16},{17},{18},{19},{20}," +
                     "{21},{22},{23},{24},{25},{26},{27},{28},{29},{30}," +
                     "{31},{32},{33},{34},{35},{36},{37},{38},{39},{40}," +
@@ -44,6 +45,10 @@ namespace GrafixJobOrders
                 csv.AppendLine(newLine);
                 File.AppendAllText(fileName, csv.ToString());
                 MessageBox.Show("Job order succesfully created.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                allTabs.SelectedTab = allOrdersTab;
+                ClearTextBoxes(orderDetailsTab);
+                enableDisableisableTextfieldsInOrderDetails(false, orderDetailsTab);
+                loadFromFile();
             }
             catch (Exception ex)
             {
@@ -51,34 +56,129 @@ namespace GrafixJobOrders
             }
         }
 
+        private void loadFromFile()
+        {
+            try
+            {
+                string delimiter = ",";
+                string tablename = "export";
+                StreamReader sr = new StreamReader(@fileName);
+                dataset = new DataSet();
+                dataset.Tables.Add(tablename);
+                string allData = sr.ReadToEnd();
+                sr.Close();
+                string[] rows = allData.Split("\r".ToCharArray());
+                //add first the column names
+                string[] items = rows[0].Split(delimiter.ToCharArray());
+                foreach (string r in items)
+                {
+                    dataset.Tables[tablename].Columns.Add(r);
+                }
+                for (int x = 1; x < rows.Length; x++)
+                {
+                    items = rows[x].Split(delimiter.ToCharArray());
+                    dataset.Tables[tablename].Rows.Add(items);
+                    Application.DoEvents();
+                }
+                allJobOrdersDataGrid.DataSource = dataset.Tables[0].DefaultView;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading records. Please close the file " + fileName + " if you opened it. Full Error: \n" + ex.ToString(), "Attention", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //this is to edit or produce reports
+        private void allJobOrdersDataGrid_DoubleClick(object sender, EventArgs e)
+        {
+            int rowindex = allJobOrdersDataGrid.CurrentCell.RowIndex;
+            string orderCode = allJobOrdersDataGrid.Rows[rowindex].Cells[75].Value.ToString();
+            allTabs.SelectedTab = orderDetailsTab;
+            enableDisableisableTextfieldsInOrderDetails(true, orderDetailsTab);
+            orderCodeSelected = orderCode;
+            createJobOrderButton.Text = "Save Changes";
+            MessageBox.Show(orderCode);
+        }
+
+        private void allJobOrdersDataGrid_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            int rowindex = allJobOrdersDataGrid.CurrentCell.RowIndex;
+            string orderCode = allJobOrdersDataGrid.Rows[rowindex].Cells[75].Value.ToString();
+            if (MessageBox.Show("Are you sure you want to delete job order " + orderCode + "?", "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            {
+                deleteAtRowWithCode(orderCode);
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void deleteAtRowWithCode(string orderCode)
+        {
+            var tempFile = Path.GetTempFileName();
+            var linesToKeep = File.ReadLines(fileName).Where(line => !line.Contains(orderCode));
+            File.WriteAllLines(tempFile, linesToKeep);
+            File.Delete(fileName);
+            File.Move(tempFile, fileName);
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             loadFromFile();
+            enableDisableisableTextfieldsInOrderDetails(false, orderDetailsTab);
         }
 
-        private void loadFromFile()
+        private void newJobOrder_Click(object sender, EventArgs e)
         {
-            string delimiter = ",";
-            string tablename = "export";
-            StreamReader sr = new StreamReader(fileName);
-            dataset.Tables.Add(tablename);
-            string allData = sr.ReadToEnd();
-            string[] rows = allData.Split("\r".ToCharArray());
-            //add first the column names
-            string[] items = rows[0].Split(delimiter.ToCharArray());
-            foreach(string r in items)
-            {
-                dataset.Tables[tablename].Columns.Add(r);
-            }
-            for (int x=1; x<rows.Length; x++)
-            {
-                items = rows[x].Split(delimiter.ToCharArray());
-                dataset.Tables[tablename].Rows.Add(items);
-                Application.DoEvents();
-            }
-            allJobOrdersDataGrid.DataSource = dataset.Tables[0].DefaultView;
+            enableDisableisableTextfieldsInOrderDetails(true, orderDetailsTab);
+            allTabs.SelectedTab = orderDetailsTab;
+            createJobOrderButton.Text = "Save New Order";
+            orderCodeSelected = "";
         }
-        
+
+        private void enableDisableisableTextfieldsInOrderDetails(bool method, Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                if (c is TextBox)
+                {
+                    c.Enabled = method;
+                }
+                if (c.HasChildren)
+                {
+                    enableDisableisableTextfieldsInOrderDetails(method, c);
+                }
+            }
+            createJobOrderButton.Enabled = method;
+            cancelButton.Enabled = method;
+        }
+
+        public void ClearTextBoxes(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                if (c is TextBox)
+                {
+                    ((TextBox)c).Clear();
+                }
+                if (c.HasChildren)
+                {
+                    ClearTextBoxes(c);
+                }
+            }
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to cancel this job order", "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            {
+                ClearTextBoxes(orderDetailsTab);
+                enableDisableisableTextfieldsInOrderDetails(false, orderDetailsTab);
+                allTabs.SelectedTab = allOrdersTab;
+            }
+        }
+
         private string randomString(int length)
         {
             var chars = "ABCDEFGHIJKLMNPQRSTUVWXYZ123456789";
@@ -91,33 +191,6 @@ namespace GrafixJobOrders
             var finalString = new String(stringChars);
             return finalString;
         }
-
-        private void allJobOrdersDataGrid_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
-        {
-            int rowindex = allJobOrdersDataGrid.CurrentCell.RowIndex;
-            string orderCode = allJobOrdersDataGrid.Rows[rowindex].Cells[75].Value.ToString();
-            if (MessageBox.Show("Are you sure you want to delete job order " + orderCode + "?", "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
-            {
-                updateCSV(orderCode);
-            }
-            else
-            {
-                e.Cancel = true;
-            }
-        }
-
-        public void updateCSV(string Pstring)
-        {
-            string[] values = File.ReadAllText(fileName).Split(new char[] { ',' });
-            StringBuilder ObjStringBuilder = new StringBuilder();
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == Pstring)
-                    continue;
-                ObjStringBuilder.Append(values[i] + ",");
-            }
-            ObjStringBuilder.ToString().Remove(ObjStringBuilder.Length - 1);
-            File.WriteAllText(fileName, ObjStringBuilder.ToString());
-        }
+        
     }
 }
