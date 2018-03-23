@@ -19,6 +19,7 @@ namespace GrafixJobOrders
         public Form1()
         {
             InitializeComponent();
+            initTimerForCalculateSizes();
         }
 
         private void createJobOrderButton_Click(object sender, EventArgs e)
@@ -59,7 +60,7 @@ namespace GrafixJobOrders
                "{61},{62},{63},{64},{65},{66},{67},{68},{69},{70}," +
                "{71},{72},{73},{74},{75},{76},{77},{78},{79},{80}," +
                "{81},{82},{83},{84},{85},{86},{87},{88},{89},{90}," +
-               "{91},{92},{93}",
+               "{91},{92},{93},{94},{95},{96},{97},{98},{99},{100},{101}",
                customer.Text, projectTitle.Text, colorCombination.Text, pattern.Text, date.Text, dueDate.Text, quantity.Text, fabric.Text, endorsedBy.Text, jobEndorsedBy.Text, k6Male.Text,
                k8Male.Text, k10Male.Text, k12Male.Text, k14Male.Text, k16Male.Text, k18Male.Text, k20Male.Text, tsMale.Text, xsMale.Text, sMale.Text,
                mMale.Text, lMale.Text, xlMale.Text, xxlMale.Text, xxxlMale.Text, xxxxlMale.Text, xxxxxlMale.Text, totalMale.Text, k6Female.Text, k8Female.Text,
@@ -69,7 +70,8 @@ namespace GrafixJobOrders
                bodyColorAmount5.Text, neckCollarCuffs1.Text, neckCollarCuffs2.Text, neckCollarCuffsAmount1.Text, neckCollarCuffsAmount2.Text, garterZipper1.Text, garterZipperAmount1.Text, thread1.Text, thread2.Text, threadAmount1.Text,
                threadAmount2.Text, estimatedBy.Text, materialsOrderedBy.Text, note.Text, amountPerPiece.Text, numberOfPieces.Text, dateReceived.Text, dateReleased.Text, dateProjectReport.Text, fabricMaterialsExp.Text,
                paintExp.Text, cutSewLaborExp.Text, transportationExp.Text, marketingFeeExp.Text, otherExpensesExp1.Text, otherExpensesExp2.Text, preparedBy.Text, checkedBy.Text, totalAmount.Text, expenses.Text,
-               netIncome.Text, receivable.Text, randomString(8));
+               netIncome.Text, receivable.Text, randomString(8), photoTextbox.Text, totalPayable.Text, partialPayment.Text, additionalPayment.Text, balance.Text, partialPaymentDate.Text, additionalPaymentDate.Text,
+                ((poRadioButton.Checked) ? "PO" : "Cash"));
             csv.AppendLine(newLine);
             File.AppendAllText(fileName, csv.ToString());
             File.AppendAllText(fileNameBackup, csv.ToString());
@@ -90,7 +92,7 @@ namespace GrafixJobOrders
                 "{61},{62},{63},{64},{65},{66},{67},{68},{69},{70}," +
                 "{71},{72},{73},{74},{75},{76},{77},{78},{79},{80}," +
                 "{81},{82},{83},{84},{85},{86},{87},{88},{89},{90}," +
-                "{91},{92},{93}",
+                "{91},{92},{93},{94},{95},{96},{97},{98},{99},{100},{101}",
                 customer.Text, projectTitle.Text, colorCombination.Text, pattern.Text, date.Text, dueDate.Text, quantity.Text, fabric.Text, endorsedBy.Text, jobEndorsedBy.Text, k6Male.Text,
                 k8Male.Text, k10Male.Text, k12Male.Text, k14Male.Text, k16Male.Text, k18Male.Text, k20Male.Text, tsMale.Text, xsMale.Text, sMale.Text,
                 mMale.Text, lMale.Text, xlMale.Text, xxlMale.Text, xxxlMale.Text, xxxxlMale.Text, xxxxxlMale.Text, totalMale.Text, k6Female.Text, k8Female.Text,
@@ -100,7 +102,8 @@ namespace GrafixJobOrders
                 bodyColorAmount5.Text, neckCollarCuffs1.Text, neckCollarCuffs2.Text, neckCollarCuffsAmount1.Text, neckCollarCuffsAmount2.Text, garterZipper1.Text, garterZipperAmount1.Text, thread1.Text, thread2.Text, threadAmount1.Text,
                 threadAmount2.Text, estimatedBy.Text, materialsOrderedBy.Text, note.Text, amountPerPiece.Text, numberOfPieces.Text, dateReceived.Text, dateReleased.Text, dateProjectReport.Text, fabricMaterialsExp.Text, 
                 paintExp.Text, cutSewLaborExp.Text, transportationExp.Text, marketingFeeExp.Text, otherExpensesExp1.Text, otherExpensesExp2.Text, preparedBy.Text, checkedBy.Text, totalAmount.Text, expenses.Text,
-                netIncome.Text, receivable.Text, orderCodeSelected);
+                netIncome.Text, receivable.Text, orderCodeSelected, photoTextbox.Text, totalPayable.Text, partialPayment.Text, additionalPayment.Text, balance.Text, partialPaymentDate.Text, additionalPaymentDate.Text,
+                ((poRadioButton.Checked)?"PO":"Cash"));
             csv.AppendLine(newLine);
             File.AppendAllText(fileName, csv.ToString());
             File.AppendAllText(fileNameBackup, csv.ToString());
@@ -113,7 +116,6 @@ namespace GrafixJobOrders
             try
             {
                 string delimiter = ",";
-                string tablename = "export";
                 StreamReader sr = new StreamReader(@fileName);
                 dataset = new DataTable();
                 //dataset.Tables.Add(tablename);
@@ -257,6 +259,29 @@ namespace GrafixJobOrders
             expenses.Text = allJobOrdersDataGrid.Rows[rowindex].Cells[90].Value.ToString();
             netIncome.Text = allJobOrdersDataGrid.Rows[rowindex].Cells[91].Value.ToString();
             receivable.Text = allJobOrdersDataGrid.Rows[rowindex].Cells[92].Value.ToString();
+            //93 is for the order code
+            //set the image
+            photoTextbox.Text = allJobOrdersDataGrid.Rows[rowindex].Cells[94].Value.ToString();
+            photoPicbox.Image = (photoTextbox.Text.Length > 1) ? new Bitmap(photoTextbox.Text) : null;
+            totalPayable.Text = allJobOrdersDataGrid.Rows[rowindex].Cells[95].Value.ToString();
+            partialPayment.Text = allJobOrdersDataGrid.Rows[rowindex].Cells[96].Value.ToString();
+            additionalPayment.Text = allJobOrdersDataGrid.Rows[rowindex].Cells[97].Value.ToString();
+            balance.Text = allJobOrdersDataGrid.Rows[rowindex].Cells[98].Value.ToString();
+            partialPaymentDate.Text = allJobOrdersDataGrid.Rows[rowindex].Cells[99].Value.ToString();
+            additionalPaymentDate.Text = allJobOrdersDataGrid.Rows[rowindex].Cells[100].Value.ToString();
+            //this is for the radio button of the mode of payment; cash or PO
+            poRadioButton.Checked = false;
+            cashRadioButton.Checked = false;
+            if (allJobOrdersDataGrid.Rows[rowindex].Cells[101].Value.ToString() == "PO")
+            {
+                poRadioButton.Checked = true;
+                cashRadioButton.Checked = false;
+            }
+            else if(allJobOrdersDataGrid.Rows[rowindex].Cells[101].Value.ToString() == "Cash")
+            {
+                poRadioButton.Checked = false;
+                cashRadioButton.Checked = true;
+            }
         }
 
         private void allJobOrdersDataGrid_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
@@ -349,6 +374,7 @@ namespace GrafixJobOrders
                 enableDisableisableTextfieldsInOrderDetails(false, orderDetailsTab);
                 enableDisableisableTextfieldsInOrderDetails(false, projectReportTab);
                 allTabs.SelectedTab = allOrdersTab;
+                photoPicbox.Image = null;
             }
         }
 
@@ -366,6 +392,78 @@ namespace GrafixJobOrders
                 {
                     allJobOrdersDataGrid.Columns[x].Visible = false;
                 }
+            }
+        }
+
+        private void changePhotoButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                string originalFile = open.FileName;
+                string fileExtension = Path.GetExtension(originalFile);
+                photoPicbox.Image = new Bitmap(open.FileName);
+                photoTextbox.Text = "Data/Images/" + randomString(8) + fileExtension;
+                File.Copy(originalFile, photoTextbox.Text);
+            }
+        }
+
+        private void calculateSizesTotal(object sender, EventArgs e)
+        {
+            int totalMaleNum = 0;
+            try
+            {
+                totalMaleNum += (k6Male.Text.Length > 0) ? Int32.Parse(k6Male.Text) : 0;
+                totalMaleNum += (k8Male.Text.Length > 0) ? Int32.Parse(k8Male.Text) : 0;
+                totalMaleNum += (k10Male.Text.Length > 0) ? Int32.Parse(k10Male.Text) : 0;
+                totalMaleNum += (k12Male.Text.Length > 0) ? Int32.Parse(k12Male.Text) : 0;
+                totalMaleNum += (k14Male.Text.Length > 0) ? Int32.Parse(k14Male.Text) : 0;
+                totalMaleNum += (k16Male.Text.Length > 0) ? Int32.Parse(k16Male.Text) : 0;
+                totalMaleNum += (k18Male.Text.Length > 0) ? Int32.Parse(k18Male.Text) : 0;
+                totalMaleNum += (k20Male.Text.Length > 0) ? Int32.Parse(k20Male.Text) : 0;
+                totalMaleNum += (tsMale.Text.Length > 0) ? Int32.Parse(tsMale.Text) : 0;
+                totalMaleNum += (xsMale.Text.Length > 0) ? Int32.Parse(xsMale.Text) : 0;
+                totalMaleNum += (sMale.Text.Length > 0) ? Int32.Parse(sMale.Text) : 0;
+                totalMaleNum += (mMale.Text.Length > 0) ? Int32.Parse(mMale.Text) : 0;
+                totalMaleNum += (lMale.Text.Length > 0) ? Int32.Parse(lMale.Text) : 0;
+                totalMaleNum += (xlMale.Text.Length > 0) ? Int32.Parse(xlMale.Text) : 0;
+                totalMaleNum += (xxlMale.Text.Length > 0) ? Int32.Parse(xxlMale.Text) : 0;
+                totalMaleNum += (xxxlMale.Text.Length > 0) ? Int32.Parse(xxxlMale.Text) : 0;
+                totalMaleNum += (xxxxlMale.Text.Length > 0) ? Int32.Parse(xxxxlMale.Text) : 0;
+                totalMaleNum += (xxxxxlMale.Text.Length > 0) ? Int32.Parse(xxxxxlMale.Text) : 0;
+                totalMale.Text = totalMaleNum.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("One of the male sizes you entered is not a number.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            int totalFemaleNum = 0;
+            try
+            {
+                totalFemaleNum += (k6Female.Text.Length > 0) ? Int32.Parse(k6Female.Text) : 0;
+                totalFemaleNum += (k8Female.Text.Length > 0) ? Int32.Parse(k8Female.Text) : 0;
+                totalFemaleNum += (k10Female.Text.Length > 0) ? Int32.Parse(k10Female.Text) : 0;
+                totalFemaleNum += (k12Female.Text.Length > 0) ? Int32.Parse(k12Female.Text) : 0;
+                totalFemaleNum += (k14Female.Text.Length > 0) ? Int32.Parse(k14Female.Text) : 0;
+                totalFemaleNum += (k16Female.Text.Length > 0) ? Int32.Parse(k16Female.Text) : 0;
+                totalFemaleNum += (k18Female.Text.Length > 0) ? Int32.Parse(k18Female.Text) : 0;
+                totalFemaleNum += (k20Female.Text.Length > 0) ? Int32.Parse(k20Female.Text) : 0;
+                totalFemaleNum += (tsFemale.Text.Length > 0) ? Int32.Parse(tsFemale.Text) : 0;
+                totalFemaleNum += (xsFemale.Text.Length > 0) ? Int32.Parse(xsFemale.Text) : 0;
+                totalFemaleNum += (sFemale.Text.Length > 0) ? Int32.Parse(sFemale.Text) : 0;
+                totalFemaleNum += (mFemale.Text.Length > 0) ? Int32.Parse(mFemale.Text) : 0;
+                totalFemaleNum += (lFemale.Text.Length > 0) ? Int32.Parse(lFemale.Text) : 0;
+                totalFemaleNum += (xlFemale.Text.Length > 0) ? Int32.Parse(xlFemale.Text) : 0;
+                totalFemaleNum += (xxlFemale.Text.Length > 0) ? Int32.Parse(xxlFemale.Text) : 0;
+                totalFemaleNum += (xxxlFemale.Text.Length > 0) ? Int32.Parse(xxxlFemale.Text) : 0;
+                totalFemaleNum += (xxxxlFemale.Text.Length > 0) ? Int32.Parse(xxxxlFemale.Text) : 0;
+                totalFemaleNum += (xxxxxlFemale.Text.Length > 0) ? Int32.Parse(xxxxxlFemale.Text) : 0;
+                totalFemale.Text = totalFemaleNum.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("One of the Female sizes you entered is not a number.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -410,6 +508,30 @@ namespace GrafixJobOrders
             {
                 searchButton_Click(sender, e);
             }
+        }
+
+        private Timer calculateSizesTotalTimer;
+        public void initTimerForCalculateSizes()
+        {
+            calculateSizesTotalTimer = new Timer();
+            calculateSizesTotalTimer.Tick += new EventHandler(calculateSizesTotal);
+            calculateSizesTotalTimer.Interval = 3000; // in miliseconds
+            calculateSizesTotalTimer.Start();
+        }
+
+        private void paymentModeButton_Click(object sender, EventArgs e)
+        {
+            allTabs.SelectedTab = paymentModeTab;
+        }
+
+        private void paymentModeCancelButton_Click(object sender, EventArgs e)
+        {
+            cancelButton_Click(sender, e);
+        }
+
+        private void paymentModeSaveButton_Click(object sender, EventArgs e)
+        {
+            createJobOrderButton_Click(sender, e);
         }
     }
 }
